@@ -4,17 +4,27 @@
 #include "freertos/task.h"
 #include <stdio.h>
 
-#include "display.h"       // Display functions
-#include "esp_lcd_touch.h" // Defines esp_lcd_touch_point_t
-#include "extendio.h"      // Extended IO functions
-#include "i2c_utils.h"     // I2C utilities
-#include "lvgl_module.h"   // LVGL module
-#include "touch.h"         // Touch functions
+#include "config_manager.h" // Configuration manager
+#include "display.h"        // Display functions
+#include "esp_lcd_touch.h"  // Defines esp_lcd_touch_point_t
+#include "extendio.h"       // Extended IO functions
+#include "i2c_utils.h"      // I2C utilities
+#include "lvgl_module.h"    // LVGL module
+#include "touch.h"          // Touch functions
 
 
 static const char *TAG = "Touch 1.85 sampole";
 
 void app_main(void) {
+  // --- 0. INITIALIZE CONFIGURATION ---
+  if (config_init() == ESP_OK) {
+    ESP_LOGI(TAG, "Configuration initialized successfully");
+    ESP_LOGI(TAG, "SSID: %s", config_get_wifi_ssid());
+    ESP_LOGI(TAG, "Password: %s", config_get_wifi_password());
+  } else {
+    ESP_LOGE(TAG, "Failed to initialize configuration");
+  }
+
   // --- 1. INITIALIZE I2C ---
   i2c_system_handles_t i2c_handles;
   ESP_ERROR_CHECK(i2c_system_init(&i2c_handles));

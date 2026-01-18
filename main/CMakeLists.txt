@@ -1,4 +1,5 @@
 idf_component_register(SRCS "main.c" "drivers/i2c_utils.c" "drivers/display.c" "drivers/touch.c" "drivers/extendio.c" "drivers/lvgl_module.c"
+                    "config/config_manager.c"
                     "ui/ui.c" "ui/ui_helpers.c"
                     "ui/screens/ui_Screen1.c" 
                     "ui/screens/ui_About.c" 
@@ -9,4 +10,8 @@ idf_component_register(SRCS "main.c" "drivers/i2c_utils.c" "drivers/display.c" "
                     "ui/images/ui_img_kafkar_logo_no_boarder_100_white_png.c" 
                     "ui/images/ui_img_back32_png.c"
                     "ui/images/ui_img_settings32_png.c"
-                    INCLUDE_DIRS "." "drivers" "ui")
+                    INCLUDE_DIRS "." "drivers" "ui" "config"
+                    REQUIRES spiffs json nvs_flash)
+
+spiffs_create_partition_image(storage data FLASH_IN_PROJECT)
+
