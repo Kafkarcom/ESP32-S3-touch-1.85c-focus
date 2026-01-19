@@ -11,6 +11,7 @@
 #include "lvgl_module.h"   // LVGL module
 #include "touch.h"         // Touch functions
 #include "drivers/wifi_connection.h" // WiFi connection functions
+#include "drivers/ntp_time.h"   // NTP time synchronization
 
 
 static const char *TAG = "Touch 1.85 sampole";
@@ -42,6 +43,9 @@ void app_main(void) {
 
   // --- 6. SETUP WIFI CONNECTION ---
   ESP_ERROR_CHECK(wifi_init());
+
+  // --- 7. SYNCHRONIZE TIME WITH NTP SERVER ---
+  ESP_ERROR_CHECK(ntp_sync_time(30000)); // Wait up to 30 seconds for NTP sync
 
   ESP_LOGI(TAG, "System Ready. LVGL UI is running!");
 

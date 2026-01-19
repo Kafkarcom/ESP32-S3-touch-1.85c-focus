@@ -1,4 +1,12 @@
-idf_component_register(SRCS "main.c" "drivers/i2c_utils.c" "drivers/display.c" "drivers/touch.c" "drivers/extendio.c" "drivers/lvgl_module.c" "drivers/wifi_connection.c"
+idf_component_register(SRCS 
+                    "main.c" 
+                    "drivers/i2c_utils.c" 
+                    "drivers/display.c" 
+                    "drivers/touch.c" 
+                    "drivers/extendio.c" 
+                    "drivers/lvgl_module.c" 
+                    "drivers/wifi_connection.c"
+                    "drivers/ntp_time.c"                    
                     "ui/ui.c" "ui/ui_helpers.c"
                     "ui/screens/ui_Screen1.c" 
                     "ui/screens/ui_About.c" 
