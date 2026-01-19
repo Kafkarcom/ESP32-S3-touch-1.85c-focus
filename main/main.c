@@ -10,6 +10,7 @@
 #include "i2c_utils.h"     // I2C utilities
 #include "lvgl_module.h"   // LVGL module
 #include "touch.h"         // Touch functions
+#include "drivers/wifi_connection.h" // WiFi connection functions
 
 
 static const char *TAG = "Touch 1.85 sampole";
@@ -38,6 +39,9 @@ void app_main(void) {
 
   // --- 5. INITIALIZE LVGL MODULE ---
   lvgl_module_init(io_handle, panel_handle, touch_handle);
+
+  // --- 6. SETUP WIFI CONNECTION ---
+  ESP_ERROR_CHECK(wifi_init());
 
   ESP_LOGI(TAG, "System Ready. LVGL UI is running!");
 

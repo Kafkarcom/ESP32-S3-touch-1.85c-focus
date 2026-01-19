@@ -1,0 +1,12 @@
+# ESP32 Partition Table
+# This is a custom partition table for the ESP32-S3 touch 1.85c device.
+# Device memory = Built in 512KB SRAM and 384KB ROM, 16MB Flash and 8MB PSRAM
+# Adjust the sizes and offsets as needed for your application.
+
+# Name,   Type, SubType, Offset,  Size, Flags
+nvs,      data, nvs,     0x9000,  0x7000,
+ota_0,    app,  ota_0,   0x10000, 0x500000,
+ota_1,    app,  ota_1,   0x510000,0x500000,
+ota_data, data, ota,     0xa10000,0x2000,
+nvs_key,  data, nvs_keys,0xa12000,0x1000,
+spiffs,   data, spiffs,  0xa13000,0x5ed000,
