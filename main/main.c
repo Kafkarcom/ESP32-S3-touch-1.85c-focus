@@ -10,8 +10,10 @@
 #include "i2c_utils.h"     // I2C utilities
 #include "lvgl_module.h"   // LVGL module
 #include "touch.h"         // Touch functions
+#include "ui/ui.h"         // UI definitions
 #include "drivers/wifi_connection.h" // WiFi connection functions
 #include "drivers/ntp_time.h"   // NTP time synchronization
+#include "drivers/time_display.h" // Time display on UI
 
 
 static const char *TAG = "Touch 1.85 sampole";
@@ -46,6 +48,9 @@ void app_main(void) {
 
   // --- 7. SYNCHRONIZE TIME WITH NTP SERVER ---
   ESP_ERROR_CHECK(ntp_sync_time(30000)); // Wait up to 30 seconds for NTP sync
+
+  // --- 8. INITIALIZE TIME DISPLAY ---
+  time_display_init(ui_Label1); // Display time on Label1 in HH:MM format
 
   ESP_LOGI(TAG, "System Ready. LVGL UI is running!");
 
