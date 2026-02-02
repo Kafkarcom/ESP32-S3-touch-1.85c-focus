@@ -8,6 +8,7 @@ static const char *TAG = "TimeDisplay";
 static lv_obj_t *s_hour_label = NULL;
 static lv_obj_t *s_minute_label = NULL;
 static lv_obj_t *s_second_label = NULL;
+static lv_obj_t *s_date_label = NULL;
 static lv_timer_t *s_time_timer = NULL;
 
 // Timer callback - runs on LVGL task (thread-safe)
@@ -31,6 +32,13 @@ static void time_update_timer_cb(lv_timer_t *timer)
     lv_label_set_text(s_hour_label, hour_str);
     lv_label_set_text(s_minute_label, min_str);
     lv_label_set_text(s_second_label, sec_str);
+
+    // Update date label if initialized
+    if (s_date_label != NULL) {
+        char date_str[12];  // DD/MM/YYYY format = 10 chars + null terminator
+        strftime(date_str, sizeof(date_str), "%d/%m/%Y", &timeinfo);
+        lv_label_set_text(s_date_label, date_str);
+    }
 }
 
 void time_display_init(lv_obj_t *hour_label, lv_obj_t *minute_label, lv_obj_t *second_label)
@@ -52,6 +60,22 @@ void time_display_init(lv_obj_t *hour_label, lv_obj_t *minute_label, lv_obj_t *s
     }
 }
 
+void date_display_init(lv_obj_t *date_label)
+{
+    if (date_label == NULL) {
+        ESP_LOGE(TAG, "Invalid date label pointer");
+        return;
+    }
+
+    s_date_label = date_label;
+    ESP_LOGI(TAG, "Date display initialized (Format: DD/MM/YYYY)");
+
+    // Trigger initial update
+    if (s_time_timer != NULL) {
+        time_update_timer_cb(s_time_timer);
+    }
+}
+
 void time_display_update(void)
 {
     // Direct update - can be called from anywhere (thread-safe via LVGL)
@@ -70,5 +94,6 @@ void time_display_stop(void)
     s_hour_label = NULL;
     s_minute_label = NULL;
     s_second_label = NULL;
-    ESP_LOGI(TAG, "Time display stopped");
+    s_date_label = NULL;
+    ESP_LOGI(TAG, "Time and date display stopped");
 }

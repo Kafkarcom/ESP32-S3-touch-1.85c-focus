@@ -52,6 +52,9 @@ void app_main(void) {
   // --- 8. INITIALIZE TIME DISPLAY ---
   time_display_init(ui_hours, uic_minuts, uic_seconds); // Display time on ui_hours, uic_minuts, and uic_seconds labels
 
+  // --- 9. INITIALIZE DATE DISPLAY ---
+  date_display_init(uic_date); // Display date on uic_date label in DD/MM/YYYY format
+
   ESP_LOGI(TAG, "System Ready. LVGL UI is running!");
 
   // Keep the main task alive
