@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Size: 80 px
  * Bpp: 1
- * Opts: --bpp 1 --size 80 --font C:/Users/data/kafkar.com/projects/displays/sampledisplay/assets/fonds/ArchivoBlack-Regular.ttf -o C:/Users/data/kafkar.com/projects/displays/sampledisplay/assets/fonds\ui_font_ArchivoBlackRegular.c --format lvgl -r 0x20-0x7f --no-compress --no-prefilter
+ * Opts: --bpp 1 --size 80 --font C:/Users/data/kafkar.com/projects/displays/sampledisplay/assets/fonts/ArchivoBlack-Regular.ttf -o C:/Users/data/kafkar.com/projects/displays/sampledisplay/assets/fonts\ui_font_ArchivoBlackRegular.c --format lvgl -r 0x20-0x7f --no-compress --no-prefilter
  ******************************************************************************/
 
 #include "../ui.h"

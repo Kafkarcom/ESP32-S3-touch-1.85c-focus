@@ -5,9 +5,11 @@
 
 /**
  * @brief Initialize time display and start update task
- * @param time_label Pointer to the LVGL label object for time display
+ * @param hour_label Pointer to the LVGL label object for hours
+ * @param minute_label Pointer to the LVGL label object for minutes
+ * @param second_label Pointer to the LVGL label object for seconds
  */
-void time_display_init(lv_obj_t *time_label);
+void time_display_init(lv_obj_t *hour_label, lv_obj_t *minute_label, lv_obj_t *second_label);
 
 /**
  * @brief Update the time label with current time

@@ -12,32 +12,37 @@ extern "C" {
 
 #include "lvgl.h"
 
-#include "ui_events.h"
 #include "ui_helpers.h"
+#include "ui_events.h"
+
 
 ///////////////////// SCREENS ////////////////////
 
-#include "screens/ui_About.h"
-#include "screens/ui_Screen1.h"
 #include "screens/ui_flash_screen.h"
-
+#include "screens/ui_About.h"
+#include "screens/ui_time.h"
+#include "screens/ui_SetupFocus.h"
+#include "screens/ui_Focus.h"
 
 ///////////////////// VARIABLES ////////////////////
 
+
 // EVENTS
 
-extern lv_obj_t *ui____initial_actions0;
+extern lv_obj_t * ui____initial_actions0;
 
 // IMAGES AND IMAGE SETS
-LV_IMG_DECLARE(
-    ui_img_kafkar_logo_no_boarder_100_white_png); // assets/kafkar_logo_no_boarder_100_white.png
-LV_IMG_DECLARE(ui_img_back32_png);     // assets/back32.png
-LV_IMG_DECLARE(ui_img_settings32_png); // assets/settings32.png
+LV_IMG_DECLARE(ui_img_kafkar_logo_no_boarder_100_white_png);    // assets/kafkar_logo_no_boarder_100_white.png
+LV_IMG_DECLARE(ui_img_back32_png);    // assets/back32.png
+LV_IMG_DECLARE(ui_img_settings32_png);    // assets/settings32.png
+LV_IMG_DECLARE(ui_img_372656621);    // assets/time-management32.png
+LV_IMG_DECLARE(ui_img_back24_png);    // assets/back24.png
 
 // FONTS
 LV_FONT_DECLARE(ui_font_ArchivoBlackRegular);
 LV_FONT_DECLARE(ui_font_Font1);
 LV_FONT_DECLARE(ui_font_MomoTrustDisplay);
+LV_FONT_DECLARE(ui_font_ZalandoSansExpandedVariableFontwght);
 
 // UI INIT
 void ui_init(void);

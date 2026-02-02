@@ -13,7 +13,7 @@ void ui_event_ImgButton2(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        _ui_screen_change(&ui_Screen1, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_Screen1_screen_init);
+        _ui_screen_change(&ui_time, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_time_screen_init);
     }
 }
 
@@ -32,6 +32,7 @@ void ui_About_screen_init(void)
     lv_obj_set_x(ui_ImgButton2, 1);
     lv_obj_set_y(ui_ImgButton2, 146);
     lv_obj_set_align(ui_ImgButton2, LV_ALIGN_CENTER);
+    lv_obj_set_ext_click_area(ui_ImgButton2, 30);
 
     lv_obj_add_event_cb(ui_ImgButton2, ui_event_ImgButton2, LV_EVENT_ALL, NULL);
 

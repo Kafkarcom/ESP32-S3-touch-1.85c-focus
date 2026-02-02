@@ -32,7 +32,9 @@ void ui_init(void)
     lv_disp_set_theme(dispp, theme);
     ui_flash_screen_screen_init();
     ui_About_screen_init();
-    ui_Screen1_screen_init();
+    ui_time_screen_init();
+    ui_SetupFocus_screen_init();
+    ui_Focus_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_flash_screen);
 }
@@ -41,5 +43,7 @@ void ui_destroy(void)
 {
     ui_flash_screen_screen_destroy();
     ui_About_screen_destroy();
-    ui_Screen1_screen_destroy();
+    ui_time_screen_destroy();
+    ui_SetupFocus_screen_destroy();
+    ui_Focus_screen_destroy();
 }

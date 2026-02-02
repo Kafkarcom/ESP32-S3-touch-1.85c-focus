@@ -50,7 +50,7 @@ void app_main(void) {
   ESP_ERROR_CHECK(ntp_sync_time(30000)); // Wait up to 30 seconds for NTP sync
 
   // --- 8. INITIALIZE TIME DISPLAY ---
-  time_display_init(ui_Label1); // Display time on Label1 in HH:MM format
+  time_display_init(ui_hours, uic_minuts, uic_seconds); // Display time on ui_hours, uic_minuts, and uic_seconds labels
 
   ESP_LOGI(TAG, "System Ready. LVGL UI is running!");
 
