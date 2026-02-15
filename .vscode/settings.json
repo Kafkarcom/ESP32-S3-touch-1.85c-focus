@@ -12,5 +12,6 @@
     "--background-index",
     "--query-driver=**",
     "--compile-commands-dir=c:\\Users\\data\\kafkar.com\\projects\\displays\\ESP32-S3-touch-1.85c-focus\\build"
-  ]
+  ],
+  "idf.currentSetup": "c:\\Users\\data\\kafkar.com\\tool_installs\\esp-idf\\v5.5.2\\esp-idf"
 }

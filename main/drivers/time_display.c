@@ -1,4 +1,5 @@
 #include "time_display.h"
+#include "timezone.h"
 #include "esp_log.h"
 #include "lvgl.h"
 #include <time.h>
@@ -19,6 +20,8 @@ static void time_update_timer_cb(lv_timer_t *timer)
     }
 
     time_t now = time(NULL);
+    // Apply timezone offset
+    now += timezone_get_offset_seconds();
     struct tm timeinfo = *localtime(&now);
     
     // Format: HH, MM, and SS separately

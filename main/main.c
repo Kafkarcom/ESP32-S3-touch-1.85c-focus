@@ -14,6 +14,7 @@
 #include "drivers/wifi_connection.h" // WiFi connection functions
 #include "drivers/ntp_time.h"   // NTP time synchronization
 #include "drivers/time_display.h" // Time display on UI
+#include "drivers/timezone.h"    // Timezone management
 
 
 static const char *TAG = "Touch 1.85 sampole";
@@ -46,13 +47,16 @@ void app_main(void) {
   // --- 6. SETUP WIFI CONNECTION ---
   ESP_ERROR_CHECK(wifi_init());
 
-  // --- 7. SYNCHRONIZE TIME WITH NTP SERVER ---
+  // --- 7. INITIALIZE TIMEZONE (load from NVS, default +1 hour for Netherlands) ---
+  ESP_ERROR_CHECK(timezone_init());
+
+  // --- 8. SYNCHRONIZE TIME WITH NTP SERVER ---
   ESP_ERROR_CHECK(ntp_sync_time(30000)); // Wait up to 30 seconds for NTP sync
 
-  // --- 8. INITIALIZE TIME DISPLAY ---
+  // --- 9. INITIALIZE TIME DISPLAY ---
   time_display_init(ui_hours, uic_minuts, uic_seconds); // Display time on ui_hours, uic_minuts, and uic_seconds labels
 
-  // --- 9. INITIALIZE DATE DISPLAY ---
+  // --- 10. INITIALIZE DATE DISPLAY ---
   date_display_init(uic_date); // Display date on uic_date label in DD/MM/YYYY format
 
   ESP_LOGI(TAG, "System Ready. LVGL UI is running!");
