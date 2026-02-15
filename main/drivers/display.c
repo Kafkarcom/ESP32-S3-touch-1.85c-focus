@@ -313,9 +313,11 @@ void draw_circle(esp_lcd_panel_handle_t panel_handle, uint16_t x_center, uint16_
 /**
  * @brief Initialize the display panel
  * @param panel_handle Pointer to store the panel handle
+ * @param io_handle Pointer to store the panel IO handle
+ * @param brightness_percent Backlight brightness (0-100%)
  * @return ESP_OK on success
  */
-esp_err_t display_init(esp_lcd_panel_handle_t *panel_handle, esp_lcd_panel_io_handle_t *io_handle) {
+esp_err_t display_init(esp_lcd_panel_handle_t *panel_handle, esp_lcd_panel_io_handle_t *io_handle, uint8_t brightness_percent) {
     // Initialize QSPI bus
     spi_bus_config_t buscfg = {
         .sclk_io_num = LCD_SCK,
@@ -367,6 +369,7 @@ esp_err_t display_init(esp_lcd_panel_handle_t *panel_handle, esp_lcd_panel_io_ha
     gpio_set_direction(LCD_BL, GPIO_MODE_OUTPUT);
     gpio_set_level(LCD_BL, 1);
     backlight_init();
+    set_backlight_brightness(brightness_percent);
 
     *io_handle = panel_io_handle;
 

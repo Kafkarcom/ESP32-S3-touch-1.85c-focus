@@ -29,7 +29,7 @@ void app_main(void) {
   // --- 3. CONFIGURE LCD PANEL ---
   esp_lcd_panel_handle_t panel_handle = NULL;
   esp_lcd_panel_io_handle_t io_handle = NULL;
-  ESP_ERROR_CHECK(display_init(&panel_handle, &io_handle));
+  ESP_ERROR_CHECK(display_init(&panel_handle, &io_handle, 10)); // Set backlight to 50%
 
   ESP_LOGI(TAG, "Heartbeat: ST77916 360x360 is active!");
 
